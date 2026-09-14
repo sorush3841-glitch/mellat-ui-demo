@@ -4,144 +4,127 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<meta name="apple-mobile-web-app-title" content="همراه ملت" />
 <meta name="theme-color" content="#D81736" />
 <title>همراه بانک ملت</title>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--red:#D81736;--red2:#B0122C;--gold:#FDBD51;--bg:#F3F4F6;--card:#fff;--text:#1A1A1A;--muted:#6B7280;--line:#ECECEC;--ok:#2E7D32}
+:root{--red:#D81736;--bg:#F2F2F2;--line:#E6E6E6}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html,body{height:100%;height:100dvh;height:100svh;font-family:Vazirmatn,Tahoma,sans-serif;background:#0b0b0b;color:var(--text);overflow:hidden}
-.app{max-width:430px;margin:0 auto;height:100dvh;height:100svh;background:var(--bg);display:flex;flex-direction:column;position:relative;overflow:hidden;padding-bottom:env(safe-area-inset-bottom,0px)}
-.status{display:none}
-.view{display:none;flex:1;flex-direction:column;min-height:0}.view.on{display:flex}
-.scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
-.login{background:linear-gradient(180deg,#fff 0%,#F8F8F8 100%)}
-.login-hero{padding:28px 24px 12px;text-align:center}
-.logo-img{width:86px;height:54px;margin:8px auto 12px;display:block;object-fit:contain;filter:drop-shadow(0 6px 14px rgba(216,23,54,.25))}
-.logo-img.hdr{width:52px;height:34px;margin:0 8px 0 0;filter:none}
-.logo-wrap-h{display:flex;align-items:center;gap:6px;font-weight:800;font-size:15px}
-.brand{font-size:22px;font-weight:800}.brand small{display:block;font-size:11px;font-weight:500;color:#888}
-.login-box{margin:8px 18px 20px;background:#fff;border-radius:16px;padding:18px;box-shadow:0 8px 24px rgba(0,0,0,.06)}
-.fld{margin-bottom:14px}.fld label{display:block;font-size:12px;color:#888;margin-bottom:4px}
-.fld input{width:100%;border:none;border-bottom:1.5px solid #E5E7EB;padding:8px 0;font:inherit;font-size:16px;outline:none;background:transparent;text-align:right}
-.btn{border:none;border-radius:12px;padding:13px;font:inherit;font-weight:700;font-size:16px}
-.btn-red{background:var(--red);color:#fff;width:100%}.btn-ghost{background:#F3F4F6;color:#333;flex:1}
-.row-bio{display:flex;gap:8px;margin-top:8px}
-.mini{display:flex;justify-content:space-between;margin-top:14px;font-size:12.5px}.mini a{color:#1976D2;text-decoration:none}
-.top{background:linear-gradient(180deg,#D81736 0%,#C41430 100%);color:#fff;padding:6px 16px 18px;flex-shrink:0}
-.top-row{display:flex;align-items:center;justify-content:space-between}
-.iconbtn{width:36px;height:36px;border:none;background:rgba(255,255,255,.15);border-radius:10px;color:#fff;font-size:18px}
-.hello{font-size:13px;opacity:.9;margin-top:10px}.hello b{display:block;font-size:18px;font-weight:800}
-.wrap{padding:0 14px calc(120px + env(safe-area-inset-bottom,0px))}
-.acc{background:#fff;border-radius:16px;margin-top:-10px;padding:14px 16px 12px;box-shadow:0 10px 28px rgba(20,20,40,.08)}
-.acc-type{font-size:12px;color:#888}.acc-name{font-size:15px;font-weight:800;margin:2px 0}.acc-no{font-size:12px;direction:ltr;color:#666}
-.acc-h{display:flex;justify-content:space-between;align-items:flex-start}
-.eye{border:none;background:#FFF1F3;color:var(--red);width:32px;height:32px;border-radius:8px}
-.bal-lab{font-size:12px;color:#888;margin-top:12px}.bal{font-size:22px;font-weight:800;direction:ltr;text-align:right}.bal span{font-size:13px;font-weight:600;color:#666}
-.blocked{margin-top:10px;background:#FFF6F7;border:1px solid #FFD6DC;border-radius:12px;padding:10px 12px}
-.blocked .k{font-size:11.5px;color:#9A1B2E}.blocked .v{font-size:16px;font-weight:800;color:var(--red);direction:ltr}
-.qacts{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
-.qacts button{border:none;background:#F8F8F8;border-radius:12px;padding:8px 4px;font:inherit;font-size:11px}.qacts i{display:block;font-size:18px;margin-bottom:3px}
-.sec-t{margin:16px 2px 8px;font-size:13px;font-weight:700;display:flex;justify-content:space-between}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.tile{background:#fff;border-radius:14px;padding:14px;box-shadow:0 2px 8px rgba(0,0,0,.04);display:flex;align-items:center;gap:10px}
-.tile .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:20px;background:#FFF1F3}
-.tile b{display:block;font-size:13px}.tile small{color:#888;font-size:11px}
-.dock{position:absolute;left:10px;right:10px;bottom:calc(12px + env(safe-area-inset-bottom,0px));background:var(--red);color:#fff;border-radius:18px;display:grid;grid-template-columns:repeat(5,1fr);padding:8px 4px 10px;box-shadow:0 10px 24px rgba(216,23,54,.35);z-index:8}
-.dock button{background:none;border:none;color:#fff;font:inherit;font-size:10.5px;font-weight:600}.dock i{display:block;font-size:18px;margin-bottom:2px}
-.nav{background:#fff;padding:10px 12px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--line);flex-shrink:0}.nav b{font-size:15px}
-.form{padding:14px}.line{background:#fff;border-radius:12px;padding:10px 12px;margin-bottom:10px}.line label{font-size:11px;color:#999;display:block}
-.line input,.line select{width:100%;border:none;background:transparent;font:inherit;font-size:15px;outline:none;padding:4px 0;text-align:right}
-.hint{font-size:11px;color:#999;padding:4px 4px 12px}
-.list{background:#fff}.li{display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border-bottom:1px solid var(--line);font-size:14px;background:#fff}
-.okbox{text-align:center;padding:36px 16px}.okc{width:74px;height:74px;margin:0 auto 12px;border-radius:50%;background:#E8F5E9;color:var(--ok);display:grid;place-items:center;font-size:34px}
-.toast{position:absolute;bottom:86px;left:16px;right:16px;background:#222;color:#fff;padding:11px;border-radius:10px;font-size:13px;text-align:center;display:none;z-index:30}
-.drawer{position:absolute;inset:0;background:rgba(0,0,0,.35);display:none;z-index:25;justify-content:flex-start}.drawer.show{display:flex}
-.drawer .pan{width:82%;max-width:320px;background:#fff;height:100%;overflow:auto}.drawer .who{background:var(--red);color:#fff;padding:28px 16px 16px}
-.chip{display:inline-block;background:#F3F3F3;border-radius:8px;padding:3px 8px;font-size:12px;direction:ltr}
-</style>
-</head>
-<body>
-<div class="app">
-  <div class="status"><span id="clk">01:04</span><span>LTE  ■■■  🔋</span></div>
-  <section class="view on login" id="v-login">
-    <div class="scroll">
-      <div class="login-hero">
-        <img class="logo-img" src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Bank_Mellat_Logo2.svg" alt="بانک ملت" />
-        <div class="brand">بانک ملت<small>HAMRAH BANK MELLAT</small></div>
-      </div>
-      <div class="login-box">
-        <div class="fld"><label>شماره موبایل / شناسه</label><input value="0918***5704" /></div>
-        <div class="fld"><label>رمز عبور</label><input type="password" value="••••••••" /></div>
-        <button class="btn btn-red" onclick="go('home')">ورود</button>
-        <div class="row-bio"><button class="btn btn-ghost" onclick="go('home')">اثر انگشت</button><button class="btn btn-ghost" onclick="go('home')">چهره</button></div>
-        <div class="mini"><a href="#" onclick="toast('فعال‌سازی');return false">فعال‌سازی</a><a href="#" onclick="toast('بازیابی رمز');return false">فراموشی رمز</a></div>
-      </div>
-      <p class="hint" style="text-align:center">نسخه نمایشی — متصل به بانک واقعی نیست</p>
-    </div>
-  </section>
-  <section class="view" id="v-home">
-    <div class="top">
-      <div class="top-row">
-        <button class="iconbtn" onclick="drawer(true)">☰</button>
-        <div class="logo-wrap-h"><img class="logo-img hdr" src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Bank_Mellat_Logo2.svg" alt="" />همراه بانک ملت</div>
-        <button class="iconbtn" onclick="toast('اعلان جدیدی نیست')">🔔</button>
-      </div>
-      <div class="hello">سلام، خوش آمدید<b>مریم جعفری</b></div>
-    </div>
-    <div class="scroll wrap">
-      <div class="acc">
-        <div class="acc-h"><div><div class="acc-type">قرض‌الحسنه جاری · انفرادی</div><div class="acc-name">مریم جعفری</div><div class="acc-no">۹۰۹۷۶۴۸۱۸۷</div></div><button class="eye" onclick="toggleBal()">👁</button></div>
-        <div class="bal-lab">مانده قابل برداشت</div>
-        <div class="bal" id="bal">۷۲,۸۹۴,۳۰۵ <span>ریال</span></div>
-        <div class="blocked"><div class="k">موجودی مسدود در حساب پشتیبان</div><div class="v">۷۴۳,۷۵۶,۳۴۷.۰۴ ریال</div></div>
-        <div class="qacts"><button onclick="go('turn')"><i>📄</i>گردش</button><button onclick="go('acc')"><i>ℹ️</i>جزئیات</button><button onclick="go('c2c')"><i>💳</i>کارت به کارت</button><button onclick="go('shaba')"><i>🔢</i>شبا</button></div>
-      </div>
-      <div class="sec-t"><span>خدمات پرتکرار</span><span style="color:var(--red);font-size:12px" onclick="go('menu')">همه</span></div>
-      <div class="grid">
-        <div class="tile" onclick="go('c2c')"><div class="ic">💳</div><div><b>کارت به کارت</b><small>شتابی</small></div></div>
-        <div class="tile" onclick="go('paya')"><div class="ic">🏦</div><div><b>حواله</b><small>پایا / ساتنا / پل</small></div></div>
-        <div class="tile" onclick="go('bill')"><div class="ic">🧾</div><div><b>پرداخت قبض</b><small>آب، برق، گاز</small></div></div>
-        <div class="tile" onclick="go('charge')"><div class="ic">📶</div><div><b>شارژ و بسته</b><small>همراه اول، ایرانسل</small></div></div>
-        <div class="tile" onclick="go('check')"><div class="ic">✍️</div><div><b>چک صیادی</b><small>پیچک</small></div></div>
-        <div class="tile" onclick="go('card')"><div class="ic">🔐</div><div><b>مدیریت کارت</b><small>رمز پویا</small></div></div>
-        <div class="tile" onclick="go('loan')"><div class="ic">💰</div><div><b>تسهیلات</b><small>اقساط و فرابانک</small></div></div>
-        <div class="tile" onclick="go('block')"><div class="ic">🚫</div><div><b>مسدودی</b><small>گزارش انسداد</small></div></div>
-      </div>
-    </div>
-    <div class="dock">
-      <button onclick="go('home')"><i>🏠</i>خانه</button>
-      <button onclick="go('c2c')"><i>💳</i>کارت‌به‌کارت</button>
-      <button onclick="go('bill')"><i>🧾</i>قبض</button>
-      <button onclick="go('charge')"><i>⚡</i>شارژ</button>
-      <button onclick="go('menu')"><i>☰</i>خدمات</button>
-    </div>
-  </section>
-  <section class="view" id="v-acc"><div class="nav"><button class="iconbtn" style="background:#f3f3f3;color:#333" onclick="go('home')">‹</button><b>اطلاعات حساب</b></div><div class="scroll"><div class="list"><div class="li"><span>صاحب حساب</span><b>مریم جعفری</b></div><div class="li"><span>شماره حساب</span><span class="chip">9097648187</span></div><div class="li"><span>شبا</span><span class="chip" style="font-size:11px">IR350120000000009097648187</span></div><div class="li"><span>نوع حساب</span><span>جاری بدون دسته چک حقیقی</span></div><div class="li"><span>مانده</span><b>۷۲,۸۹۴,۳۰۵ ریال</b></div><div class="li"><span>مسدود پشتیبان</span><b style="color:var(--red)">۷۴۳,۷۵۶,۳۴۷.۰۴</b></div></div></div></section>
-  <section class="view" id="v-shaba"><div class="nav"><button class="iconbtn" style="background:#f3f3f3;color:#333" onclick="go('home')">‹</button><b>شماره شبا</b></div><div class="form"><div class="line" style="text-align:center;padding:22px"><div style="font-size:12px;color:#888">شبا حساب مریم جعفری</div><div style="direction:ltr;font-weight:800;font-size:15px;margin-top:8px">IR350120000000009097648187</div></div><button class="btn btn-red" onclick="toast('شبا کپی شد')">کپی شبا</button></div></section>
-  <section class="view" id="v-block"><div class="nav"><button class="iconbtn" style="background:#f3f3f3;color:#333" onclick="go('home')">‹</button><b>گزارش مسدودی</b></div><div class="form"><div class="acc" style="margin:0"><div class="acc-type">حساب پشتیبان</div><div class="acc-name">مریم جعفری — ۹۰۹۷۶۴۸۱۸۷</div><div class="blocked" style="margin-top:12px"><div class="k">موجودی مسدود</div><div class="v">۷۴۳,۷۵۶,۳۴۷.۰۴ ریال</div></div><p class="hint">مبلغ مسدود تا رفع مسدودی قابل برداشت نیست.</p></div></div></section>
-  <section class="view" id="v-turn"><div class="nav"><button class="iconbtn" style="background:#f3f3f3;color:#333" onclick="go('home')">‹</button><b>گردش حساب</b></div><div class="list"><div class="li"><span>برداشت</span><span style="color:#c00">↓ ۱,۸۰۰,۰۰۰,۴۵۰</span></div><div class="li"><span>برداشت</span><span style="color:#c00">↓ ۳۰,۰۰۰</span></div><div class="li"><span>برداشت</span><span style="color:#c00">↓ ۱۵۰,۰۰۰,۰۰۰</span></div><div class="li"><span>برداشت</span><span style="color:#c00">↓ ۱۳۰,۰۰۰,۴۵۰</span></div></div></section>
-  <section class="view" id="v-c2c"><div class="nav"><button class="iconbtn" style="background:#f3f3f3;color:#333" onclick="go('home')">‹</button><b>کارت به کارت</b></div><div class="scroll form"><div class="line"><label>کارت مبدأ *</label><input placeholder="انتخاب کارت ملت" /></div><div class="line"><label>کارت مقصد *</label><input inputmode="numeric" /></div><div class="line"><label>مبلغ (ریال) *</label><input inputmode="numeric" /></div><div class="line"><label>CVV2 *</label><input inputmode="numeric" /></div><div class="line"><label>رمز پویا *</label><input /></div><button class="btn btn-red" onclick="go('ok')">تأیید و ادامه</button></div></section>
-  <section class="view" id="v-paya"><div class="nav"><button class="iconbtn" style="background:#f3f3f3;color:#333" onclick="go('home')">‹</button><b>حواله</b></div><div class="list"><div class="li" onclick="go('c2c')">کارت به کارت</div><div class="li" onclick="toast('پایا')">حواله پایا</div><div class="li" onclick="toast('پل')">حواله پل</div><div class="li" onclick="toast('ساتنا')">حواله ساتنا</div></div></section>
-  <section class="view" id="v-bill"><div class="nav"><button class="iconbtn" style="background:#f3f3f3;color:#333" onclick="go('home')">‹</button><b>پرداخت قبض</b></div><div class="form"><div class="line"><label>شناسه قبض</label><input inputmode="numeric" /></div><div class="line"><label>شناسه پرداخت</label><input inputmode="numeric" /></div><button class="btn btn-red" onclick="go('ok')">استعلام و پرداخت</button></div></section>
-  <section class="view" id="v-charge"><div class="nav"><button class="iconbtn" style="background:#f3f3f3;color:#333" onclick="go('home')">‹</button><b>خرید شارژ</b></div><div class="form"><div class="line"><label>اپراتور</label><select><option>همراه اول</option><option>ایرانسل</option><option>رایتل</option></select></div><div class="line"><label>شماره</label><input value="0918***5704" /></div><button class="btn btn-red" onclick="go('ok')">خرید</button></div></section>
-  <section class="view" id="v-check"><div class="nav"><button class="iconbtn" style="background:#f3f3f3;color:#333" onclick="go('home')">‹</button><b>چک صیادی</b></div><div class="list"><div class="li">ثبت صدور چک (پیچک)</div><div class="li">تأیید دریافت چک</div><div class="li">ثبت انتقال چک</div></div></section>
-  <section class="view" id="v-card"><div class="nav"><button class="iconbtn" style="background:#f3f3f3;color:#333" onclick="go('home')">‹</button><b>مدیریت کارت</b></div><div class="list"><div class="li">فعال‌سازی رمز پویا</div><div class="li">سقف کارت</div><div class="li">مسدود کردن کارت</div></div></section>
-  <section class="view" id="v-loan"><div class="nav"><button class="iconbtn" style="background:#f3f3f3;color:#333" onclick="go('home')">‹</button><b>تسهیلات</b></div><div class="list"><div class="li">فرابانک ملت</div><div class="li">پرداخت اقساط</div></div></section>
-  <section class="view" id="v-menu"><div class="nav"><button class="iconbtn" style="background:#f3f3f3;color:#333" onclick="go('home')">‹</button><b>همه خدمات</b></div><div class="list"><div class="li" onclick="go('acc')">مدیریت حساب</div><div class="li" onclick="go('paya')">انتقال وجه</div><div class="li" onclick="go('bill')">قبض و شارژ</div><div class="li" onclick="go('check')">چک</div><div class="li" onclick="go('card')">کارت</div><div class="li" onclick="go('loan')">تسهیلات</div><div class="li" onclick="go('block')">مسدودی</div><div class="li" onclick="go('login')">خروج</div></div></section>
-  <section class="view" id="v-ok"><div class="nav"><button class="iconbtn" style="background:#f3f3f3;color:#333" onclick="go('home')">‹</button><b>رسید</b></div><div class="okbox"><div class="okc">✓</div><h3>عملیات نمایشی موفق</h3><p class="hint">هیچ وجهی جابه‌جا نشد.</p><button class="btn btn-red" onclick="go('home')">بازگشت به خانه</button></div></section>
-  <div class="drawer" id="drawer" onclick="if(event.target.id==='drawer')drawer(false)"><div class="pan"><div class="who"><div style="font-size:13px;opacity:.85">مشتری بانک ملت</div><div style="font-size:18px;font-weight:800">مریم جعفری</div><div style="font-size:12px;margin-top:4px;direction:ltr">9097648187</div></div><div class="li" onclick="drawer(false);go('home')">خانه</div><div class="li" onclick="drawer(false);go('acc')">حساب‌ها</div><div class="li" onclick="drawer(false);go('login')">خروج</div></div></div>
-  <div class="toast" id="toast"></div>
+html,body{height:100svh;font-family:Vazirmatn,Tahoma,sans-serif;background:#111;overflow:hidden}
+.app{max-width:430px;margin:0 auto;height:100svh;background:var(--bg);display:flex;flex-direction:column;position:relative;overflow:hidden}
+.view{display:none;flex:1;min-height:0;flex-direction:column}.view.on{display:flex}
+.scroll{flex:1;overflow-y:auto}
+.hdr{background:#fff;border-bottom:1px solid var(--line);padding:8px 12px;display:flex;align-items:center;justify-content:space-between}
+.hdr img{height:28px}.ttl{font-weight:800;font-size:14px}
+.ib{width:36px;height:36px;border:none;background:#F5F5F5;border-radius:10px;font-size:18px}
+.tabs{display:flex;background:#fff;border-bottom:1px solid var(--line)}
+.tabs button{flex:1;border:none;background:none;padding:10px 4px;font:inherit;font-size:12.5px;color:#888;font-weight:600}
+.tabs button.on{color:var(--red);box-shadow:inset 0 -2px 0 var(--red)}
+.acc{background:#fff;margin:12px;border-radius:8px;box-shadow:0 1px 4px rgba(0,0,0,.06);overflow:hidden}
+.acc-top{padding:14px}.acc-type{font-size:12px;color:#888}.acc-no{font-size:13px;direction:ltr;margin:4px 0}
+.acc-bal{font-size:22px;font-weight:800}.acc-bal small{font-size:12px;color:#666}
+.acc-acts{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:1px solid var(--line)}
+.acc-acts button{border:none;background:#fff;padding:10px 4px;font:inherit;font-size:11.5px}
+.acc-acts button+button{border-right:1px solid var(--line)}
+.pull{position:absolute;left:0;right:0;bottom:0;z-index:12}
+.pull-bar{background:var(--red);color:#fff;text-align:center;padding:8px 8px calc(10px + env(safe-area-inset-bottom,0px));border-radius:16px 16px 0 0}
+.pull-handle{width:42px;height:4px;background:rgba(255,255,255,.55);border-radius:4px;margin:0 auto 8px}
+.pull-mini{display:grid;grid-template-columns:repeat(4,1fr);font-size:11px}.pull-mini b{display:block;font-size:18px}
+.sheet{display:none;background:#fff;color:#222;padding:8px}.sheet.on{display:block}
+.sheet .row{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px}
+.sheet .cell{background:#F7F7F7;border-radius:10px;padding:12px;text-align:center;font-size:13px;font-weight:600}
+.nav{background:#fff;padding:10px 12px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--line)}
+.list{background:#fff}.li{display:flex;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--line);font-size:14px}
+.form{padding:12px}.line{background:#fff;border-radius:8px;padding:10px 12px;margin-bottom:8px}
+.line label{display:block;font-size:11px;color:#999}
+.line input,.line select{width:100%;border:none;font:inherit;font-size:15px;outline:none;text-align:right}
+.btn{border:none;border-radius:8px;padding:12px;font:inherit;font-weight:700;width:100%}
+.btn-red{background:var(--red);color:#fff}.hint{font-size:11px;color:#999;padding:8px}
+.okc{width:70px;height:70px;margin:24px auto 10px;border-radius:50%;background:#E8F5E9;color:#2E7D32;display:grid;place-items:center;font-size:32px}
+.center{text-align:center;padding:20px}
+.toast{position:absolute;bottom:90px;left:16px;right:16px;background:#222;color:#fff;padding:10px;border-radius:8px;font-size:13px;text-align:center;display:none;z-index:30}
+.drawer{position:absolute;inset:0;background:rgba(0,0,0,.35);display:none;z-index:20;justify-content:flex-start}.drawer.on{display:flex}
+.drawer .pan{width:84%;max-width:330px;background:#fff;height:100%;overflow:auto}
+.who{background:var(--red);color:#fff;padding:22px 14px}.sec{padding:8px 14px 4px;font-size:12px;color:var(--red);font-weight:800}
+.logo-big{width:92px;height:58px;object-fit:contain;display:block;margin:28px auto 8px}
+.brand{text-align:center;font-weight:800;font-size:20px}.login-box{margin:18px}
+.chip{direction:ltr;font-size:12px;background:#F3F3F3;padding:3px 8px;border-radius:6px}
+</style></head><body><div class="app">
+<section class="view on" id="v-login"><div class="scroll">
+<img class="logo-big" src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Bank_Mellat_Logo2.svg" alt="">
+<div class="brand">همراه بانک ملت</div>
+<div class="login-box">
+<div class="line"><label>نام کاربری / موبایل</label><input value="0918***5704"></div>
+<div class="line"><label>رمز عبور</label><input type="password" value="••••••••"></div>
+<button class="btn btn-red" onclick="go('home')">ورود</button>
+<p class="hint" style="text-align:center">نسخه نمایشی — به بانک واقعی وصل نیست</p>
+</div></div></section>
+<section class="view" id="v-home">
+<div class="hdr"><button class="ib" onclick="toast('اعلانی نیست')">🔔</button>
+<div style="display:flex;align-items:center;gap:6px"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Bank_Mellat_Logo2.svg" alt=""><span class="ttl">همراه بانک ملت</span></div>
+<button class="ib" onclick="openDrawer(true)">☰</button></div>
+<div class="tabs"><button class="on" onclick="setTab(this,'sep')">خدمات سپرده</button><button onclick="setTab(this,'loan')">تسهیلات</button><button onclick="setTab(this,'card')">کارت</button></div>
+<div class="scroll" style="padding-bottom:92px">
+<div id="tab-sep"><div class="acc"><div class="acc-top">
+<div class="acc-type">قرض‌الحسنه جاری · انفرادی</div>
+<div style="font-weight:800">مریم جعفری</div>
+<div class="acc-no">۹۰۹۷۶۴۸۱۸۷</div>
+<div style="font-size:11px;color:#888;margin-top:8px">مانده حساب</div>
+<div class="acc-bal">۴۳۵٫۳۶۷٫۳۲۵٫۶۷۸ <small>ریال</small></div>
 </div>
+<div class="acc-acts"><button onclick="toast('به‌روز شد')">بروزرسانی</button><button onclick="go('turn')">گردش حساب</button><button onclick="go('acc')">سرویس‌ها</button></div>
+</div></div>
+<div id="tab-loan" style="display:none"><p class="hint" style="text-align:center;padding:28px">تسهیلات فعالی نیست.</p></div>
+<div id="tab-card" style="display:none"><div class="acc"><div class="acc-top"><div class="acc-type">ملت کارت</div><div class="acc-no">۶۱۰۴ **** **** ۱۲۳۴</div><div style="font-weight:800;color:#2E7D32">فعال</div></div></div></div>
+</div>
+<div class="pull"><div class="pull-bar" onclick="togglePull()"><div class="pull-handle"></div>
+<div class="pull-mini">
+<div onclick="event.stopPropagation();go('charge')"><b>⚡</b>خرید شارژ</div>
+<div onclick="event.stopPropagation();go('paya')"><b>🏦</b>حواله</div>
+<div onclick="event.stopPropagation();go('c2c')"><b>💳</b>کارت به کارت</div>
+<div onclick="event.stopPropagation();go('bill')"><b>🧽</b>پرداخت قبض</div>
+</div></div>
+<div class="sheet" id="sheet"><div class="row">
+<div class="cell" onclick="go('charge')">خرید شارژ</div><div class="cell" onclick="go('paya')">حواله ملت</div>
+<div class="cell" onclick="go('c2c')">کارت به کارت</div><div class="cell" onclick="go('bill')">پرداخت قبض</div>
+</div></div></div></section>
+<section class="view" id="v-acc"><div class="nav"><button class="ib" onclick="go('home')">‹</button><b>اطلاعات حساب</b></div>
+<div class="list">
+<div class="li"><span>صاحب حساب</span><b>مریم جعفری</b></div>
+<div class="li"><span>شماره حساب</span><span class="chip">9097648187</span></div>
+<div class="li"><span>شبا</span><span class="chip">IR350120000000009097648187</span></div>
+<div class="li"><span>مانده</span><b>۴۳۵٫۳۶۷٫۳۲۵٫۶۷۸ ریال</b></div>
+<div class="li"><span>مسدودی</span><span>ندارد</span></div>
+</div></section>
+<section class="view" id="v-turn"><div class="nav"><button class="ib" onclick="go('home')">‹</button><b>گردش حساب</b></div>
+<div class="list">
+<div class="li"><span>واریز</span><span style="color:#2E7D32">↑ ۵۰,۰۰۰,۰۰۰</span></div>
+<div class="li"><span>برداشت</span><span style="color:#c00">↓ ۱۲,۵۰۰,۰۰۰</span></div>
+</div></section>
+<section class="view" id="v-c2c"><div class="nav"><button class="ib" onclick="go('home')">‹</button><b>کارت به کارت</b></div>
+<div class="form"><div class="line"><label>کارت مبدأ</label><input value="۶۱۰۴ **** **** ۱۲۳۴"></div>
+<div class="line"><label>کارت مقصد</label><input></div>
+<div class="line"><label>مبلغ</label><input></div>
+<button class="btn btn-red" onclick="go('ok')">تأیید</button></div></section>
+<section class="view" id="v-paya"><div class="nav"><button class="ib" onclick="go('home')">‹</button><b>حواله</b></div>
+<div class="list"><div class="li" onclick="go('c2c')">کارت به کارت</div><div class="li" onclick="toast('پایا')">حواله پایا</div><div class="li" onclick="toast('ساتنا')">حواله ساتنا</div></div></section>
+<section class="view" id="v-bill"><div class="nav"><button class="ib" onclick="go('home')">‹</button><b>قبض</b></div>
+<div class="form"><div class="line"><label>شناسه قبض</label><input></div><button class="btn btn-red" onclick="go('ok')">پرداخت</button></div></section>
+<section class="view" id="v-charge"><div class="nav"><button class="ib" onclick="go('home')">‹</button><b>شارژ</b></div>
+<div class="form"><div class="line"><label>اپراتور</label><select><option>همراه اول</option><option>ایرانسل</option></select></div><button class="btn btn-red" onclick="go('ok')">خرید</button></div></section>
+<section class="view" id="v-ok"><div class="nav"><button class="ib" onclick="go('home')">‹</button><b>رسید</b></div>
+<div class="center"><div class="okc">✓</div><h3>عملیات نمایشی</h3><p class="hint">وجه‌ای جابه‌جا نشد.</p><button class="btn btn-red" onclick="go('home')">بازگشت</button></div></section>
+<div class="drawer" id="drawer" onclick="if(event.target.id==='drawer')openDrawer(false)"><div class="pan">
+<div class="who"><div>مریم جعفری</div><div style="direction:ltr;font-size:12px">9097648187</div></div>
+<div class="li" onclick="openDrawer(false);go('acc')">حساب</div>
+<div class="li" onclick="openDrawer(false);go('c2c')">کارت به کارت</div>
+<div class="li" onclick="openDrawer(false);go('login')">خروج</div>
+</div></div>
+<div class="toast" id="toast"></div></div>
 <script>
-function go(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));const el=document.getElementById('v-'+id);if(el)el.classList.add('on');else toast('این بخش به‌زودی')}
-function toast(m){const t=document.getElementById('toast');t.textContent=m;t.style.display='block';setTimeout(()=>t.style.display='none',2000)}
-function drawer(s){document.getElementById('drawer').classList.toggle('show',s)}
-let hide=false;function toggleBal(){hide=!hide;document.getElementById('bal').innerHTML=hide?'•••••••• <span>ریال</span>':'۷۲,۸۹۴,۳۰۵ <span>ریال</span>'}
-function tick(){const d=new Date();document.getElementById('clk').textContent=String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')}tick();setInterval(tick,15000);
-</script>
-</body>
-</html>
+function go(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));const el=document.getElementById('v-'+id);if(el)el.classList.add('on');document.getElementById('sheet').classList.remove('on')}
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.style.display='block';setTimeout(()=>t.style.display='none',1800)}
+function openDrawer(s){document.getElementById('drawer').classList.toggle('on',s)}
+function togglePull(){document.getElementById('sheet').classList.toggle('on')}
+function setTab(btn,id){document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('on'));btn.classList.add('on');['sep','loan','card'].forEach(t=>document.getElementById('tab-'+t).style.display=t===id?'block':'none')}
+</script></body></html>

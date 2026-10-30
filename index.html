@@ -1,130 +1,352 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="theme-color" content="#D81736" />
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="theme-color" content="#D81736"/>
 <title>همراه بانک ملت</title>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--red:#D81736;--bg:#F2F2F2;--line:#E6E6E6}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html,body{height:100svh;font-family:Vazirmatn,Tahoma,sans-serif;background:#111;overflow:hidden}
-.app{max-width:430px;margin:0 auto;height:100svh;background:var(--bg);display:flex;flex-direction:column;position:relative;overflow:hidden}
-.view{display:none;flex:1;min-height:0;flex-direction:column}.view.on{display:flex}
-.scroll{flex:1;overflow-y:auto}
-.hdr{background:#fff;border-bottom:1px solid var(--line);padding:8px 12px;display:flex;align-items:center;justify-content:space-between}
-.hdr img{height:28px}.ttl{font-weight:800;font-size:14px}
-.ib{width:36px;height:36px;border:none;background:#F5F5F5;border-radius:10px;font-size:18px}
-.tabs{display:flex;background:#fff;border-bottom:1px solid var(--line)}
-.tabs button{flex:1;border:none;background:none;padding:10px 4px;font:inherit;font-size:12.5px;color:#888;font-weight:600}
-.tabs button.on{color:var(--red);box-shadow:inset 0 -2px 0 var(--red)}
-.acc{background:#fff;margin:12px;border-radius:8px;box-shadow:0 1px 4px rgba(0,0,0,.06);overflow:hidden}
-.acc-top{padding:14px}.acc-type{font-size:12px;color:#888}.acc-no{font-size:13px;direction:ltr;margin:4px 0}
-.acc-bal{font-size:22px;font-weight:800}.acc-bal small{font-size:12px;color:#666}
-.acc-acts{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:1px solid var(--line)}
-.acc-acts button{border:none;background:#fff;padding:10px 4px;font:inherit;font-size:11.5px}
-.acc-acts button+button{border-right:1px solid var(--line)}
-.pull{position:absolute;left:0;right:0;bottom:0;z-index:12}
-.pull-bar{background:var(--red);color:#fff;text-align:center;padding:8px 8px calc(10px + env(safe-area-inset-bottom,0px));border-radius:16px 16px 0 0}
-.pull-handle{width:42px;height:4px;background:rgba(255,255,255,.55);border-radius:4px;margin:0 auto 8px}
-.pull-mini{display:grid;grid-template-columns:repeat(4,1fr);font-size:11px}.pull-mini b{display:block;font-size:18px}
-.sheet{display:none;background:#fff;color:#222;padding:8px}.sheet.on{display:block}
-.sheet .row{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px}
-.sheet .cell{background:#F7F7F7;border-radius:10px;padding:12px;text-align:center;font-size:13px;font-weight:600}
-.nav{background:#fff;padding:10px 12px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--line)}
-.list{background:#fff}.li{display:flex;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--line);font-size:14px}
-.form{padding:12px}.line{background:#fff;border-radius:8px;padding:10px 12px;margin-bottom:8px}
-.line label{display:block;font-size:11px;color:#999}
-.line input,.line select{width:100%;border:none;font:inherit;font-size:15px;outline:none;text-align:right}
-.btn{border:none;border-radius:8px;padding:12px;font:inherit;font-weight:700;width:100%}
-.btn-red{background:var(--red);color:#fff}.hint{font-size:11px;color:#999;padding:8px}
-.okc{width:70px;height:70px;margin:24px auto 10px;border-radius:50%;background:#E8F5E9;color:#2E7D32;display:grid;place-items:center;font-size:32px}
-.center{text-align:center;padding:20px}
-.toast{position:absolute;bottom:90px;left:16px;right:16px;background:#222;color:#fff;padding:10px;border-radius:8px;font-size:13px;text-align:center;display:none;z-index:30}
-.drawer{position:absolute;inset:0;background:rgba(0,0,0,.35);display:none;z-index:20;justify-content:flex-start}.drawer.on{display:flex}
-.drawer .pan{width:84%;max-width:330px;background:#fff;height:100%;overflow:auto}
-.who{background:var(--red);color:#fff;padding:22px 14px}.sec{padding:8px 14px 4px;font-size:12px;color:var(--red);font-weight:800}
-.logo-big{width:92px;height:58px;object-fit:contain;display:block;margin:28px auto 8px}
-.brand{text-align:center;font-weight:800;font-size:20px}.login-box{margin:18px}
-.chip{direction:ltr;font-size:12px;background:#F3F3F3;padding:3px 8px;border-radius:6px}
-</style></head><body><div class="app">
-<section class="view on" id="v-login"><div class="scroll">
-<img class="logo-big" src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Bank_Mellat_Logo2.svg" alt="">
-<div class="brand">همراه بانک ملت</div>
-<div class="login-box">
-<div class="line"><label>نام کاربری / موبایل</label><input value="0918***5704"></div>
-<div class="line"><label>رمز عبور</label><input type="password" value="••••••••"></div>
-<button class="btn btn-red" onclick="go('home')">ورود</button>
-<p class="hint" style="text-align:center">نسخه نمایشی — به بانک واقعی وصل نیست</p>
-</div></div></section>
+html,body{height:100%;background:#111;font-family:Vazirmatn,Tahoma,sans-serif;color:#1a1a1a}
+.app{max-width:430px;margin:0 auto;min-height:100svh;background:#f5f5f5;position:relative;padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}
+.view{display:none}.view.on{display:block}
+.status{height:env(safe-area-inset-top,0px);background:#D81736}
+.top{background:linear-gradient(180deg,#D81736 0%,#c41430 100%);color:#fff;padding:12px 14px 16px}
+.top .row{display:flex;justify-content:space-between;align-items:center}
+.top .hello{font-size:13px;opacity:.9}
+.top .name{font-size:16px;font-weight:800;margin-top:2px}
+.top .ico{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:18px}
+.logo-line{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.logo-line img{height:26px;filter:brightness(0) invert(1)}
+.logo-line b{font-size:15px}
+.card{background:#fff;margin:12px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.06);overflow:hidden}
+.acc{padding:14px}
+.acc .t{font-size:12px;color:#888}
+.acc .num{font-size:13px;color:#555;margin:4px 0 8px;letter-spacing:.3px}
+.acc .bal{font-size:20px;font-weight:800;color:#1a1a1a}
+.acc .bal small{font-size:12px;font-weight:600;color:#888}
+.acc .actions{display:flex;gap:8px;margin-top:12px}
+.acc .actions button{flex:1;border:1px solid #eee;background:#fafafa;border-radius:8px;padding:8px;font:inherit;font-size:12px;cursor:pointer}
+.chip{display:inline-block;background:#fff3f5;color:#D81736;font-size:11px;padding:2px 8px;border-radius:10px;font-weight:700}
+.sec{padding:4px 14px 0;font-size:13px;color:#888;font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:12px}
+.grid button{border:none;background:#fff;border-radius:12px;padding:12px 4px;box-shadow:0 1px 4px rgba(0,0,0,.05);font:inherit;font-size:11px;cursor:pointer}
+.grid .ic{font-size:22px;display:block;margin-bottom:6px}
+.dock{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:min(430px,100%);background:#D81736;color:#fff;display:flex;justify-content:space-around;padding:8px 4px calc(8px + env(safe-area-inset-bottom,0px));z-index:20;box-shadow:0 -4px 16px rgba(216,23,54,.35)}
+.dock button{background:none;border:none;color:#fff;font:inherit;font-size:10.5px;cursor:pointer;opacity:.95}
+.dock .ic{display:block;font-size:20px;margin-bottom:2px}
+.hdr{background:#D81736;color:#fff;padding:12px 14px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:10}
+.hdr .back{background:none;border:none;color:#fff;font-size:22px;cursor:pointer;line-height:1}
+.hdr b{font-size:15px}
+.list button{width:100%;text-align:right;padding:14px 16px;border:none;border-bottom:1px solid #f0f0f0;background:#fff;font:inherit;font-size:14px;cursor:pointer;display:flex;justify-content:space-between}
+.fld{padding:10px 16px}
+.fld label{display:block;font-size:12px;color:#888;margin-bottom:4px}
+.fld input,.fld select{width:100%;border:1px solid #e5e5e5;border-radius:8px;padding:11px 12px;font:inherit;font-size:15px;background:#fff;outline:none}
+.fld input:focus{border-color:#D81736}
+.redbtn{display:block;width:calc(100% - 32px);margin:16px auto;background:#D81736;color:#fff;border:none;border-radius:10px;padding:13px;font:inherit;font-weight:800;font-size:15px;cursor:pointer}
+.graybtn{display:block;width:calc(100% - 32px);margin:8px auto;background:#f0f0f0;color:#333;border:none;border-radius:10px;padding:12px;font:inherit;font-size:14px;cursor:pointer}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:90px;width:min(400px,90%);background:#222;color:#fff;padding:10px 14px;border-radius:8px;text-align:center;display:none;z-index:40;font-size:13px}
+.wait{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;align-items:center;justify-content:center;z-index:50}
+.wait.on{display:flex}
+.wait .box{background:#fff;padding:22px;border-radius:12px;text-align:center;width:200px}
+.spin{width:28px;height:28px;border:3px solid #eee;border-top-color:#D81736;border-radius:50%;margin:0 auto 10px;animation:sp .8s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.turn-table{width:100%;border-collapse:collapse;font-size:12.5px}
+.turn-table th{background:#eee;padding:10px 4px;font-size:12px}
+.turn-table td{padding:11px 4px;text-align:center;border-bottom:1px solid #f0f0f0}
+.turn-table .dn{color:#c4161c;font-weight:700}
+.turn-table .up{color:#1a7f37;font-weight:700}
+.plus{display:inline-flex;width:22px;height:22px;border-radius:50%;background:#f0f0f0;align-items:center;justify-content:center;font-size:14px;color:#666}
+.info{background:#fff;margin:12px;border-radius:12px;padding:14px;font-size:13px;line-height:1.9;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.err{background:#fff3f5;color:#c4161c;text-align:center;font-weight:800;padding:14px;font-size:16px;border-bottom:1px solid #ffd6dc}
+.row{display:flex;justify-content:space-between;padding:10px 14px;border-bottom:1px solid #f5f5f5;font-size:13px}
+.row span:first-child{color:#888}
+.limit-box{margin:0 12px 12px;background:#fff;border-radius:12px;padding:12px 14px;box-shadow:0 1px 4px rgba(0,0,0,.05);border:1px solid #ffe0e4}
+.limit-box .lt{font-size:12px;color:#888;margin-bottom:6px;font-weight:600}
+.limit-box .lr{display:flex;justify-content:space-between;font-size:12.5px;padding:4px 0;border-bottom:1px dashed #f0f0f0}
+.limit-box .lr:last-child{border:none}
+.limit-box .lr b{color:#D81736}
+.login-wrap{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;background:#fff}
+.login-wrap img{height:48px;margin-bottom:8px}
+.login-wrap h1{color:#D81736;font-size:18px;margin:8px 0 24px}
+.login-wrap .fld{width:100%;max-width:340px}
+.login-wrap .redbtn{width:100%;max-width:340px}
+</style>
+</head>
+<body>
+<div class="app">
+
+<section class="view on" id="v-login">
+  <div class="login-wrap">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Bank_Mellat_Logo2.svg" alt="ملت">
+    <div style="font-weight:700;color:#555">بانک ملت</div>
+    <h1>همراه بانک ملت</h1>
+    <div class="fld"><label>شناسه مشتری</label><input value="100363578976" id="uid"></div>
+    <div class="fld"><label>رمز عبور</label><input type="password" value="12345678" id="pwd"></div>
+    <button class="redbtn" onclick="go('home')">ورود</button>
+  </div>
+</section>
+
 <section class="view" id="v-home">
-<div class="hdr"><button class="ib" onclick="toast('اعلانی نیست')">🔔</button>
-<div style="display:flex;align-items:center;gap:6px"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Bank_Mellat_Logo2.svg" alt=""><span class="ttl">همراه بانک ملت</span></div>
-<button class="ib" onclick="openDrawer(true)">☰</button></div>
-<div class="tabs"><button class="on" onclick="setTab(this,'sep')">خدمات سپرده</button><button onclick="setTab(this,'loan')">تسهیلات</button><button onclick="setTab(this,'card')">کارت</button></div>
-<div class="scroll" style="padding-bottom:92px">
-<div id="tab-sep"><div class="acc"><div class="acc-top">
-<div class="acc-type">قرض‌الحسنه جاری · انفرادی</div>
-<div style="font-weight:800">مریم جعفری</div>
-<div class="acc-no">۹۰۹۷۶۴۸۱۸۷</div>
-<div style="font-size:11px;color:#888;margin-top:8px">مانده حساب</div>
-<div class="acc-bal">۴۳۵٫۳۶۷٫۳۲۵٫۶۷۸ <small>ریال</small></div>
+  <div class="status"></div>
+  <div class="top">
+    <div class="logo-line">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Bank_Mellat_Logo2.svg" alt="">
+      <b>همراه بانک ملت</b>
+    </div>
+    <div class="row">
+      <div>
+        <div class="hello">سلام، خوش آمدید</div>
+        <div class="name">مریم جعفری</div>
+      </div>
+      <div class="ico" onclick="go('menu')">☰</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="acc">
+      <div class="t">قرض‌الحسنه جاری · انفرادی</div>
+      <div style="font-weight:800;margin-top:2px">مریم جعفری</div>
+      <div class="num">۹۰۹۷۶۴۸۱۸۷</div>
+      <div class="t">مانده قابل برداشت</div>
+      <div class="bal">۸,۵۰۴,۴۵۷,۴۵۶ <small>ریال</small></div>
+      <div class="actions">
+        <button type="button" onclick="go('turn')">گردش</button>
+        <button type="button" onclick="go('acc')">جزئیات</button>
+        <button type="button" onclick="openXfer('کارت به کارت','کارت')">کارت به کارت</button>
+        <button type="button" onclick="toast('شبا کپی شد')">شبا</button>
+      </div>
+    </div>
+  </div>
+  <div class="limit-box">
+    <div class="lt">سقف انتقال ماهانه</div>
+    <div class="lr"><span>سقف ماهانه</span><span>۱۵,۰۰۰,۰۰۰,۰۰۰ ریال</span></div>
+    <div class="lr"><span>مبلغ انتقال‌داده‌شده</span><span>۱۴,۶۸۰,۰۰۰,۰۰۰ ریال</span></div>
+    <div class="lr"><span>مانده سقف</span><b>۳۲۰,۰۰۰,۰۰۰ ریال</b></div>
+  </div>
+  <div class="sec">خدمات پرتکرار</div>
+  <div class="grid">
+    <button type="button" onclick="openXfer('حواله پایا','شبا')"><span class="ic">🏦</span>حواله</button>
+    <button type="button" onclick="openXfer('کارت به کارت','کارت')"><span class="ic">💳</span>کارت به کارت</button>
+    <button type="button" onclick="go('bill')"><span class="ic">📄</span>قبض</button>
+    <button type="button" onclick="go('charge')"><span class="ic">⚡</span>شارژ</button>
+    <button type="button" onclick="go('check')"><span class="ic">✍️</span>چک</button>
+    <button type="button" onclick="go('card')"><span class="ic">🔒</span>کارت</button>
+    <button type="button" onclick="go('loan')"><span class="ic">💰</span>تسهیلات</button>
+    <button type="button" onclick="go('turn')"><span class="ic">📋</span>گردش</button>
+  </div>
+</section>
+
+<section class="view" id="v-menu">
+  <div class="hdr"><button class="back" onclick="go('home')">‹</button><b>منو</b></div>
+  <div class="list">
+    <button type="button" onclick="go('acc')">اطلاعات حساب <span>›</span></button>
+    <button type="button" onclick="go('turn')">گردش حساب <span>›</span></button>
+    <button type="button" onclick="go('paya')">انتقال وجه <span>›</span></button>
+    <button type="button" onclick="go('bill')">قبض و شارژ <span>›</span></button>
+    <button type="button" onclick="go('check')">چک <span>›</span></button>
+    <button type="button" onclick="go('card')">کارت <span>›</span></button>
+    <button type="button" onclick="go('loan')">تسهیلات <span>›</span></button>
+    <button type="button" onclick="go('profile')">پروفایل <span>›</span></button>
+    <button type="button" onclick="go('login')">خروج <span>›</span></button>
+  </div>
+</section>
+
+<section class="view" id="v-paya">
+  <div class="hdr"><button class="back" onclick="go('home')">‹</button><b>انتقال وجه</b></div>
+  <div class="list">
+    <button type="button" onclick="openXfer('حواله هوشمند','شبا')">حواله هوشمند <span>›</span></button>
+    <button type="button" onclick="openXfer('حواله بانک ملت','حساب')">حواله بانک ملت <span>›</span></button>
+    <button type="button" onclick="openXfer('کارت به کارت','کارت')">کارت به کارت <span>›</span></button>
+    <button type="button" onclick="openXfer('حواله پایا','شبا')">حواله پایا <span>›</span></button>
+    <button type="button" onclick="openXfer('حواله پل','شبا')">حواله پل <span>›</span></button>
+    <button type="button" onclick="openXfer('حواله ساتنا','شبا')">حواله ساتنا <span>›</span></button>
+    <button type="button" onclick="openXfer('حواله گروهی','شبا')">حواله گروهی <span>›</span></button>
+    <button type="button" onclick="openXfer('حواله منظم','شبا')">حواله منظم <span>›</span></button>
+  </div>
+</section>
+
+<section class="view" id="v-xfer">
+  <div class="hdr"><button class="back" onclick="go('paya')">‹</button><b id="xferTitle">انتقال</b></div>
+  <div class="limit-box" style="margin:10px 16px">
+    <div class="lt">وضعیت سقف ماهانه</div>
+    <div class="lr"><span>منتقل‌شده</span><span>۱۴,۶۸۰,۰۰۰,۰۰۰</span></div>
+    <div class="lr"><span>مانده مجاز</span><b>۳۲۰,۰۰۰,۰۰۰ ریال</b></div>
+  </div>
+  <div class="fld"><label id="destLabel">مقصد</label><input id="destIn" placeholder=""></div>
+  <div class="fld"><label>نام و نام خانوادگی گیرنده</label><input id="nameIn" placeholder="نام گیرنده"></div>
+  <div class="fld"><label>مبلغ (ریال)</label><input id="amtIn" inputmode="numeric" oninput="this.value=fmt(this.value)"></div>
+  <div class="fld"><label>شرح</label><input id="descIn"></div>
+  <div id="rowCardExtra" style="display:none">
+    <div class="fld"><label>CVV2</label><input inputmode="numeric" maxlength="4"></div>
+  </div>
+  <div class="fld"><label>رمز دوم</label><input id="pinIn" inputmode="numeric"><button type="button" class="graybtn" style="width:auto;margin:8px 0;display:inline-block;padding:8px 12px" onclick="toast('رمز دوم ارسال شد')">دریافت رمز دوم</button></div>
+  <button class="redbtn" onclick="doXfer()">تأیید و انتقال</button>
+</section>
+
+<section class="view" id="v-ok">
+  <div class="hdr"><button class="back" onclick="go('home')">‹</button><b>نتیجه تراکنش</b></div>
+  <div class="card" style="margin-top:12px" id="rcp"></div>
+  <button class="redbtn" onclick="go('home')">بازگشت به خانه</button>
+</section>
+
+<section class="view" id="v-acc">
+  <div class="hdr"><button class="back" onclick="go('home')">‹</button><b>اطلاعات حساب</b></div>
+  <div class="info">
+    نام صاحب حساب : مریم جعفری<br>
+    شماره حساب : ۹۰۹۷۶۴۸۱۸۷<br>
+    کد شبا : IR350120000000009097648187<br>
+    حساب پشتیبان : ۹۰۹۷۶۴۸۱۹۵<br>
+    تاریخ گزارش : <span id="repDate">—</span><br>
+    نوع حساب : سپرده جاری بدون دسته چک حقیقی<br>
+    مانده : <b>۸,۵۰۴,۴۵۷,۴۵۶ ریال</b><br>
+    موجودی مسدود : ندارد
+  </div>
+  <button class="graybtn" onclick="go('turn')">مشاهده گردش حساب</button>
+</section>
+
+<section class="view" id="v-turn">
+  <div class="hdr"><button class="back" onclick="go('home')">‹</button><b>گردش حساب</b></div>
+  <div class="info" style="font-size:12.5px">
+    مریم جعفری — ۹۰۹۷۶۴۸۱۸۷<br>
+    تاریخ : <span class="repDate">—</span> — مانده <b>۸,۵۰۴,۴۵۷,۴۵۶</b>
+  </div>
+  <div class="card" style="padding:0">
+    <table class="turn-table">
+      <tr><th>اطلاعات بیشتر</th><th>مبلغ</th><th>مانده</th></tr>
+      <tr><td><span class="plus">+</span></td><td class="dn">↓ ۴۲,۵۴۶,۰۱۱</td><td style="font-weight:800">۸,۵۰۴,۴۵۷,۴۵۶</td></tr>
+      <tr><td><span class="plus">+</span></td><td class="dn">↓ ۳۰۰,۰۰۰,۰۰۰</td><td>۸,۵۴۷,۰۰۳,۴۶۷</td></tr>
+      <tr><td><span class="plus">+</span></td><td class="dn">↓ ۱,۵۰۰,۰۰۰,۰۰۰</td><td>۸,۸۴۷,۰۰۳,۴۶۷</td></tr>
+      <tr><td><span class="plus">+</span></td><td class="dn">↓ ۵,۰۰۰,۰۰۰,۰۰۰</td><td>۱۰,۳۴۷,۰۰۳,۴۶۷</td></tr>
+      <tr><td><span class="plus">+</span></td><td class="dn">↓ ۱۰,۰۰۰,۰۰۰,۰۰۰</td><td>۱۵,۳۴۷,۰۰۳,۴۶۷</td></tr>
+      <tr><td><span class="plus">+</span></td><td class="dn">↓ ۱۵,۰۰۰,۰۰۰,۰۰۰</td><td>۲۵,۳۴۷,۰۰۳,۴۶۷</td></tr>
+      <tr><td><span class="plus">+</span></td><td class="dn">↓ ۷۰۰,۰۰۰,۰۰۰,۰۰۰</td><td>۴۰,۳۴۷,۰۰۳,۴۶۷</td></tr>
+      <tr><td><span class="plus">+</span></td><td class="up">↑ ۲,۰۰۰,۰۰۰</td><td>۷۴۰,۳۴۷,۰۰۳,۴۶۷</td></tr>
+      <tr><td><span class="plus">+</span></td><td class="dn">↓ ۲۰۰,۰۰۰</td><td>۷۴۰,۳۴۵,۰۰۳,۴۶۷</td></tr>
+      <tr><td><span class="plus">+</span></td><td class="up">↑ ۱,۰۰۰,۰۰۰</td><td>۷۴۰,۳۴۶,۰۰۳,۴۶۷</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="view" id="v-bill">
+  <div class="hdr"><button class="back" onclick="go('home')">‹</button><b>پرداخت قبض</b></div>
+  <div class="fld"><label>شناسه قبض</label><input inputmode="numeric"></div>
+  <div class="fld"><label>شناسه پرداخت</label><input inputmode="numeric"></div>
+  <button class="redbtn" onclick="showLimitErr()">استعلام و پرداخت</button>
+</section>
+<section class="view" id="v-charge">
+  <div class="hdr"><button class="back" onclick="go('home')">‹</button><b>خرید شارژ</b></div>
+  <div class="fld"><label>اپراتور</label><select><option>همراه اول</option><option>ایرانسل</option><option>رایتل</option></select></div>
+  <div class="fld"><label>شماره</label><input value="0918***5704"></div>
+  <button class="redbtn" onclick="showLimitErr()">خرید</button>
+</section>
+<section class="view" id="v-check">
+  <div class="hdr"><button class="back" onclick="go('menu')">‹</button><b>چک</b></div>
+  <div class="list">
+    <button type="button" onclick="toast('ثبت صدور چک')">ثبت صدور چک (پیچک)</button>
+    <button type="button" onclick="toast('تأیید دریافت')">تأیید دریافت چک</button>
+    <button type="button" onclick="toast('ثبت انتقال')">ثبت انتقال چک</button>
+  </div>
+</section>
+<section class="view" id="v-card">
+  <div class="hdr"><button class="back" onclick="go('menu')">‹</button><b>خدمات کارت</b></div>
+  <div class="list">
+    <button type="button" onclick="toast('رمز پویا')">فعال‌سازی رمز پویا</button>
+    <button type="button" onclick="toast('سقف کارت')">تعیین سقف</button>
+    <button type="button" onclick="toast('مسدود شد')">مسدود کردن کارت</button>
+  </div>
+</section>
+<section class="view" id="v-loan">
+  <div class="hdr"><button class="back" onclick="go('menu')">‹</button><b>تسهیلات</b></div>
+  <div class="list">
+    <button type="button" onclick="toast('فرابانک')">فرابانک ملت</button>
+    <button type="button" onclick="toast('اقساط')">پرداخت اقساط</button>
+  </div>
+</section>
+<section class="view" id="v-profile">
+  <div class="hdr"><button class="back" onclick="go('menu')">‹</button><b>پروفایل</b></div>
+  <div class="info">نام : مریم جعفری<br>شناسه : 100363578976<br>موبایل : ۰۹۱۸***۵۷۰۴</div>
+</section>
+
 </div>
-<div class="acc-acts"><button onclick="toast('به‌روز شد')">بروزرسانی</button><button onclick="go('turn')">گردش حساب</button><button onclick="go('acc')">سرویس‌ها</button></div>
-</div></div>
-<div id="tab-loan" style="display:none"><p class="hint" style="text-align:center;padding:28px">تسهیلات فعالی نیست.</p></div>
-<div id="tab-card" style="display:none"><div class="acc"><div class="acc-top"><div class="acc-type">ملت کارت</div><div class="acc-no">۶۱۰۴ **** **** ۱۲۳۴</div><div style="font-weight:800;color:#2E7D32">فعال</div></div></div></div>
+
+<div class="dock" id="dock">
+  <button type="button" onclick="go('home')"><span class="ic">🏠</span>خانه</button>
+  <button type="button" onclick="openXfer('کارت به کارت','کارت')"><span class="ic">💳</span>کارت به کارت</button>
+  <button type="button" onclick="go('paya')"><span class="ic">↔️</span>حواله</button>
+  <button type="button" onclick="go('bill')"><span class="ic">📄</span>قبض</button>
+  <button type="button" onclick="go('menu')"><span class="ic">☰</span>منو</button>
 </div>
-<div class="pull"><div class="pull-bar" onclick="togglePull()"><div class="pull-handle"></div>
-<div class="pull-mini">
-<div onclick="event.stopPropagation();go('charge')"><b>⚡</b>خرید شارژ</div>
-<div onclick="event.stopPropagation();go('paya')"><b>🏦</b>حواله</div>
-<div onclick="event.stopPropagation();go('c2c')"><b>💳</b>کارت به کارت</div>
-<div onclick="event.stopPropagation();go('bill')"><b>🧽</b>پرداخت قبض</div>
-</div></div>
-<div class="sheet" id="sheet"><div class="row">
-<div class="cell" onclick="go('charge')">خرید شارژ</div><div class="cell" onclick="go('paya')">حواله ملت</div>
-<div class="cell" onclick="go('c2c')">کارت به کارت</div><div class="cell" onclick="go('bill')">پرداخت قبض</div>
-</div></div></div></section>
-<section class="view" id="v-acc"><div class="nav"><button class="ib" onclick="go('home')">‹</button><b>اطلاعات حساب</b></div>
-<div class="list">
-<div class="li"><span>صاحب حساب</span><b>مریم جعفری</b></div>
-<div class="li"><span>شماره حساب</span><span class="chip">9097648187</span></div>
-<div class="li"><span>شبا</span><span class="chip">IR350120000000009097648187</span></div>
-<div class="li"><span>مانده</span><b>۴۳۵٫۳۶۷٫۳۲۵٫۶۷۸ ریال</b></div>
-<div class="li"><span>مسدودی</span><span>ندارد</span></div>
-</div></section>
-<section class="view" id="v-turn"><div class="nav"><button class="ib" onclick="go('home')">‹</button><b>گردش حساب</b></div>
-<div class="list">
-<div class="li"><span>واریز</span><span style="color:#2E7D32">↑ ۵۰,۰۰۰,۰۰۰</span></div>
-<div class="li"><span>برداشت</span><span style="color:#c00">↓ ۱۲,۵۰۰,۰۰۰</span></div>
-</div></section>
-<section class="view" id="v-c2c"><div class="nav"><button class="ib" onclick="go('home')">‹</button><b>کارت به کارت</b></div>
-<div class="form"><div class="line"><label>کارت مبدأ</label><input value="۶۱۰۴ **** **** ۱۲۳۴"></div>
-<div class="line"><label>کارت مقصد</label><input></div>
-<div class="line"><label>مبلغ</label><input></div>
-<button class="btn btn-red" onclick="go('ok')">تأیید</button></div></section>
-<section class="view" id="v-paya"><div class="nav"><button class="ib" onclick="go('home')">‹</button><b>حواله</b></div>
-<div class="list"><div class="li" onclick="go('c2c')">کارت به کارت</div><div class="li" onclick="toast('پایا')">حواله پایا</div><div class="li" onclick="toast('ساتنا')">حواله ساتنا</div></div></section>
-<section class="view" id="v-bill"><div class="nav"><button class="ib" onclick="go('home')">‹</button><b>قبض</b></div>
-<div class="form"><div class="line"><label>شناسه قبض</label><input></div><button class="btn btn-red" onclick="go('ok')">پرداخت</button></div></section>
-<section class="view" id="v-charge"><div class="nav"><button class="ib" onclick="go('home')">‹</button><b>شارژ</b></div>
-<div class="form"><div class="line"><label>اپراتور</label><select><option>همراه اول</option><option>ایرانسل</option></select></div><button class="btn btn-red" onclick="go('ok')">خرید</button></div></section>
-<section class="view" id="v-ok"><div class="nav"><button class="ib" onclick="go('home')">‹</button><b>رسید</b></div>
-<div class="center"><div class="okc">✓</div><h3>عملیات نمایشی</h3><p class="hint">وجه‌ای جابه‌جا نشد.</p><button class="btn btn-red" onclick="go('home')">بازگشت</button></div></section>
-<div class="drawer" id="drawer" onclick="if(event.target.id==='drawer')openDrawer(false)"><div class="pan">
-<div class="who"><div>مریم جعفری</div><div style="direction:ltr;font-size:12px">9097648187</div></div>
-<div class="li" onclick="openDrawer(false);go('acc')">حساب</div>
-<div class="li" onclick="openDrawer(false);go('c2c')">کارت به کارت</div>
-<div class="li" onclick="openDrawer(false);go('login')">خروج</div>
-</div></div>
-<div class="toast" id="toast"></div></div>
+<div class="wait" id="wait"><div class="box"><div class="spin"></div><div>در حال ثبت…</div></div></div>
+<div class="toast" id="toast"></div>
 <script>
-function go(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));const el=document.getElementById('v-'+id);if(el)el.classList.add('on');document.getElementById('sheet').classList.remove('on')}
-function toast(m){const t=document.getElementById('toast');t.textContent=m;t.style.display='block';setTimeout(()=>t.style.display='none',1800)}
-function openDrawer(s){document.getElementById('drawer').classList.toggle('on',s)}
-function togglePull(){document.getElementById('sheet').classList.toggle('on')}
-function setTab(btn,id){document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('on'));btn.classList.add('on');['sep','loan','card'].forEach(t=>document.getElementById('tab-'+t).style.display=t===id?'block':'none')}
-</script></body></html>
+let xferKind='شبا',xferName='انتقال';
+function go(id){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
+  document.getElementById('v-'+id).classList.add('on');
+  document.getElementById('dock').style.display=(id==='login')?'none':'flex';
+  window.scrollTo(0,0);
+}
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.style.display='block';setTimeout(()=>t.style.display='none',1600)}
+function fmt(v){v=String(v).replace(/[^\d]/g,'');return v.replace(/\B(?=(\d{3})+(?!\d))/g,',')}
+function openXfer(name,kind){
+  xferName=name;xferKind=kind;
+  document.getElementById('xferTitle').textContent=name;
+  const L={شبا:'شماره شبا مقصد',کارت:'شماره کارت مقصد',حساب:'شماره حساب مقصد'};
+  const P={شبا:'IR...',کارت:'۱۶ رقم',حساب:'شماره حساب'};
+  document.getElementById('destLabel').textContent=L[kind]||'مقصد';
+  document.getElementById('destIn').placeholder=P[kind]||'';
+  ['destIn','amtIn','descIn','nameIn','pinIn'].forEach(i=>document.getElementById(i).value='');
+  document.getElementById('rowCardExtra').style.display=kind==='کارت'?'block':'none';
+  go('xfer');
+}
+function showLimitErr(){
+  document.getElementById('wait').classList.add('on');
+  setTimeout(()=>{
+    document.getElementById('wait').classList.remove('on');
+    document.getElementById('rcp').innerHTML=
+      '<div class="err">ناموفق</div>'+
+      '<div class="row"><span>کد خطا</span><span>LIM-MONTH-01</span></div>'+
+      '<div class="row"><span>وضعیت</span><span>تراکنش انجام نشد</span></div>'+
+      '<div class="row"><span>سقف ماهانه</span><span>۱۵,۰۰۰,۰۰۰,۰۰۰ ریال</span></div>'+
+      '<div class="row"><span>مبلغ انتقال‌داده‌شده</span><span>۱۴,۶۸۰,۰۰۰,۰۰۰ ریال</span></div>'+
+      '<div class="row"><span>مانده سقف</span><span>۳۲۰,۰۰۰,۰۰۰ ریال</span></div>'+
+      '<p style="color:#c4161c;padding:12px 14px;line-height:1.8;font-size:13px;font-weight:700">خطا: مبلغ بیش از حد مجاز است.</p>';
+    go('ok');
+  },2200);
+}
+function doXfer(){
+  const dest=document.getElementById('destIn').value.trim();
+  const amt=document.getElementById('amtIn').value.trim();
+  if(!dest){toast('مقصد را وارد کنید');return}
+  if(!amt){toast('مبلغ را وارد کنید');return}
+  document.getElementById('wait').classList.add('on');
+  setTimeout(()=>{
+    document.getElementById('wait').classList.remove('on');
+    document.getElementById('rcp').innerHTML=
+      '<div class="err">ناموفق</div>'+
+      '<div class="row"><span>کد خطا</span><span>LIM-MONTH-01</span></div>'+
+      '<div class="row"><span>وضعیت</span><span>انتقال انجام نشد</span></div>'+
+      '<div class="row"><span>نوع</span><span>'+xferName+'</span></div>'+
+      '<div class="row"><span>مبلغ درخواستی</span><span>'+fmt(amt)+' ریال</span></div>'+
+      '<div class="row"><span>سقف ماهانه</span><span>۱۵,۰۰۰,۰۰۰,۰۰۰ ریال</span></div>'+
+      '<div class="row"><span>مبلغ انتقال‌داده‌شده</span><span>۱۴,۶۸۰,۰۰۰,۰۰۰ ریال</span></div>'+
+      '<div class="row"><span>مانده سقف</span><span>۳۲۰,۰۰۰,۰۰۰ ریال</span></div>'+
+      '<div class="row"><span>حساب مبدأ</span><span>۹۰۹۷۶۴۸۱۸۷</span></div>'+
+      '<p style="color:#c4161c;padding:12px 14px;line-height:1.8;font-size:13px;font-weight:700">خطا: مبلغ بیش از حد مجاز است.<br>مانده سقف انتقال ماهانه شما ۳۲۰,۰۰۰,۰۰۰ ریال می‌باشد و مبلغ درخواستی از این حد بیشتر است. امکان انجام این تراکنش وجود ندارد.</p>';
+    go('ok');
+  },2800);
+}
+function updateFaDate(){
+  try{
+    const nice=new Intl.DateTimeFormat('fa-IR',{year:'numeric',month:'2-digit',day:'2-digit',calendar:'persian'}).format(new Date()).replace(/-/g,'/');
+    document.querySelectorAll('#repDate,.repDate').forEach(el=>el.textContent=nice);
+  }catch(e){}
+}
+updateFaDate();
+setInterval(updateFaDate,3600000);
+</script>
+</body>
+</html>
